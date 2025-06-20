@@ -1,3 +1,6 @@
+const API_BASE = 'https://passionate-surprise.up.railway.app';
+const API_KEY = 'myUltraSecretKey2025'; // Replace this with your actual value
+
 const guildInput = document.getElementById("guild-id-input");
 const connectBtn = document.getElementById("connect-btn");
 const chatLog = document.getElementById("chat-log");
@@ -41,12 +44,25 @@ connectBtn.onclick = () => {
   const id = guildInput.value.trim();
   if (!id) return;
 
-  currentGuild = id;
-  updateTitle(`Guild ${id}`);
-  loadMemory(id);
-
-  // Simulate loading channel — replace with fetch to backend later
-  addMessage("System", `🔗 Connected to guild ${id}`);
+  fetch(`${API_BASE}/connect`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': API_KEY
+    },
+    body: JSON.stringify({ guildId: id })
+  })
+  .then(res => res.json())
+  .then(data => {
+    currentGuild = id;
+    updateTitle(data.guild);
+    loadMemory(id);
+    addMessage("System", `🔗 Connected to ${data.guild}`);
+  })
+  .catch(err => {
+    addMessage("Error", "❌ Connection failed");
+    console.error(err);
+  });
 };
 
 sendBtn.onclick = () => {
@@ -55,15 +71,24 @@ sendBtn.onclick = () => {
   addMessage("You", msg);
   messageInput.value = "";
 
-  // Later: Send to backend with fetch
+  fetch(`${API_BASE}/send`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': API_KEY
+    },
+    body: JSON.stringify({ message: msg })
+  }).catch(err => {
+    addMessage("Error", "❌ Message failed");
+    console.error(err);
+  });
 };
 
-// Modal logic for sidebar actions
-document.getElementById("open-members").onclick = () => showModal("Member list loading...");
-document.getElementById("open-roles").onclick = () => showModal("Role manager coming soon...");
+document.getElementById("open-members").onclick = () => showModal("🔧 Members list coming soon...");
+document.getElementById("open-roles").onclick = () => showModal("🎭 Role manager not wired yet.");
 document.getElementById("open-history").onclick = () => {
   const logs = chatMemory[currentGuild] || [];
-  showModal(`<h3>Conversation History</h3><ul>${
+  showModal(`<h3>📜 History</h3><ul>${
     logs.map(m => `<li><b>${m.author}:</b> ${m.content}</li>`).join("")
   }</ul>`);
 };

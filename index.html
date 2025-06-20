@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Channel • Loading...</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1 id="channel-title">Your Discord Bot</h1>
+      <input type="text" id="guild-id-input" placeholder="Enter Guild ID..." />
+      <button id="connect-btn">Connect</button>
+    </header>
+
+    <main class="glass-panel">
+      <div id="chat-log"></div>
+      <div id="input-container">
+        <input type="text" id="message-input" placeholder="Type your message..." />
+        <button id="send-btn">➤</button>
+      </div>
+    </main>
+
+    <aside id="side-menu">
+      <button id="open-members">👥 Members</button>
+      <button id="open-roles">🎭 Roles</button>
+      <button id="open-history">🕘 History</button>
+    </aside>
+
+    <div id="modal" class="hidden">
+      <div class="modal-content glass-panel">
+        <span id="close-modal">&times;</span>
+        <div id="modal-body">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

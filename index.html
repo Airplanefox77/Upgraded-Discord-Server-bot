@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Discord Web Bot</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="chat-card">
+    <h2>💬 Discord Bot Chat</h2>
+    <div class="connect">
+      <input type="text" id="guild" placeholder="Guild ID" />
+      <input type="text" id="channel" placeholder="Channel ID" />
+      <button onclick="connect()">Connect</button>
+    </div>
+    <div class="chat-box" id="chat-box"></div>
+    <div class="input">
+      <input type="text" id="msg" placeholder="Type a message..." />
+      <button onclick="send()">Send</button>
+    </div>
+  </div>
+</body>
+</html>

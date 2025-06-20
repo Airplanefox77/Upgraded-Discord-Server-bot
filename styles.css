@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  width: 400px;
+  max-height: 90vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: white;
+}
+
+.connect input {
+  margin-bottom: 8px;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.connect button {
+  padding: 10px;
+  width: 100%;
+  background: #A200FF;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.chat-box {
+  flex: 1;
+  margin-top: 10px;
+  overflow-y: auto;
+  background: rgba(255,255,255,0.05);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.message {
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  word-wrap: break-word;
+}
+
+.message.you {
+  background: #A200FF;
+  align-self: flex-end;
+  text-align: right;
+  color: white;
+}
+
+.message.them {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.input {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.input button {
+  padding: 10px;
+  background: #A200FF;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
